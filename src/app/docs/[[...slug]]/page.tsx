@@ -73,25 +73,11 @@ export async function generateMetadata(
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
-  return createMetadata({
+  return {
     title: page.data.title,
-    description:
-      page.data.description ||
-      "Comprehensive API documentation, integration guides, and resources to help you seamlessly connect to Prana Connect's powerful healthcare payment system. Build, test, and deploy with ease.",
-    keywords: [
-      page.data.title,
-      ...page.slugs,
-      "Prana Connect",
-      "healthcare payment gateway",
-      "API documentation",
-      `${page.data.title} integration`,
-      `${page.slugs[page.slugs.length - 1]} guide`,
-      "healthcare payment system",
-      "Ethiopian healthcare payments",
-      "digital healthcare payments",
-    ].filter(Boolean),
+    description: page.data.description,
     openGraph: {
       images: getPageImage(page).url,
     },
-  });
+  };
 }
