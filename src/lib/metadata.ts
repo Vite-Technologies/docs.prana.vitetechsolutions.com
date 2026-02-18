@@ -1,13 +1,22 @@
 import type { Metadata } from "next/types";
 
+export const BASE_URL = "https://cbeapi.vitetechsolutions.com";
+
 export function createMetadata(override: Metadata): Metadata {
 	return {
 		...override,
 		openGraph: {
 			title: override.title ?? undefined,
 			description: override.description ?? undefined,
-			url: "https://cbeapi.vitetechsolutions.com",
-			images: "https://cbeapi.vitetechsolutions.com/og.png",
+			url: BASE_URL,
+			images: [
+				{
+					url: `${BASE_URL}/og.png`,
+					width: 1200,
+					height: 630,
+					alt: "Prana Connect",
+				}
+			],
 			siteName: "Prana Connect",
 			...override.openGraph,
 		},
@@ -16,7 +25,14 @@ export function createMetadata(override: Metadata): Metadata {
 			creator: "@alulamoke",
 			title: override.title ?? undefined,
 			description: override.description ?? undefined,
-			images: "https://cbeapi.vitetechsolutions.com/og.png",
+            images: [
+				{
+					url: `${BASE_URL}/og.png`,
+					width: 1200,
+					height: 630,
+					alt: "Prana Connect",
+				}
+			],
 			...override.twitter,
 		},
 	};
@@ -25,4 +41,4 @@ export function createMetadata(override: Metadata): Metadata {
 export const baseUrl =
 	process.env.NODE_ENV === "development"
 		? new URL("http://localhost:3000")
-		: new URL("https://cbeapi.vitetechsolutions.com");
+		: new URL(BASE_URL);

@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
+import { BASE_URL } from "@/lib/metadata";
 import { source } from "@/lib/source";
-
-const BASE_URL = "https://cbeapi.vitetechsolutions.com";
 
 export const revalidate = false;
 
