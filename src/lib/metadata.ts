@@ -11,10 +11,9 @@ export function createMetadata(override: Metadata): Metadata {
 			url: BASE_URL,
 			images: [
 				{
-					url: `${BASE_URL}/og.png`,
+					url: "/og.png",
 					width: 1200,
 					height: 630,
-					alt: "Prana Connect",
 				}
 			],
 			siteName: "Prana Connect",
@@ -27,10 +26,9 @@ export function createMetadata(override: Metadata): Metadata {
 			description: override.description ?? undefined,
             images: [
 				{
-					url: `${BASE_URL}/og.png`,
+					url: "/og.png",
 					width: 1200,
 					height: 630,
-					alt: "Prana Connect",
 				}
 			],
 			...override.twitter,
