@@ -6,7 +6,7 @@ export function createMetadata(override: Metadata): Metadata {
     openGraph: {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      url: "https://docs.prana.vitetechsolutions.com",
+      url: "https://cbeapi.vitetechsolutions.com",
       images: [
         {
           url: "/logo.jpg",
@@ -37,4 +37,4 @@ export function createMetadata(override: Metadata): Metadata {
 export const baseUrl =
   process.env.NODE_ENV === "development"
     ? new URL("http://localhost:3000")
-    : new URL("https://docs.prana.vitetechsolutions.com");
+    : new URL("https://cbeapi.vitetechsolutions.com");
