@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Host: https://docs.prana.vitetechsolutions.com
+
+Sitemap: https://docs.prana.vitetechsolutions.com/sitemap.xml
+
