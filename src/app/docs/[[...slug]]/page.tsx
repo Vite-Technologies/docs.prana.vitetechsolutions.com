@@ -56,7 +56,17 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
         />
       </DocsBody>
       <Feedback onSendAction={onPageFeedbackAction} />
-      {lastModifiedTime && <PageLastUpdate date={lastModifiedTime} />}
+      <div className="flex items-center justify-between gap-2">
+        {lastModifiedTime && <PageLastUpdate date={lastModifiedTime} />}
+        <a
+          href={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/content/docs/${page.path}`}
+          rel="noreferrer noopener"
+          target="_blank"
+          className="w-fit border shrink-0 rounded-xl p-2 font-medium text-sm text-fd-secondary-foreground bg-fd-secondary transition-colors hover:text-fd-accent-foreground hover:bg-fd-accent"
+        >
+          Edit on GitHub
+        </a>
+      </div>
     </DocsPage>
   );
 }
@@ -72,10 +82,23 @@ export async function generateMetadata(
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
+  const title = page.data.title;
+  const description = page.data.description;
+
   return {
-    title: page.data.title,
-    description: page.data.description,
+    title,
+    description,
     openGraph: {
+      title,
+      description,
+      type: "website",
+      url: page.url,
+      images: getPageImage(page).url,
+    },
+    twitter: {
+      title,
+      description,
+      card: "summary_large_image",
       images: getPageImage(page).url,
     },
   };

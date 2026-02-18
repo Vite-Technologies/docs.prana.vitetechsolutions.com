@@ -21,6 +21,11 @@ export const docs = defineDocs({
 export default defineConfig({
   plugins: [lastModified()],
   mdxOptions: {
+    remarkNpmOptions:{
+      persist: {
+        id: 'persist-install'
+      }
+    },
      remarkPlugins: [remarkFeedbackBlock],
   },
 });

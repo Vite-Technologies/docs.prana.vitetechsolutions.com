@@ -1,33 +1,32 @@
 import type { MetadataRoute } from "next";
-import { baseUrl } from "@/lib/metadata";
 import { source } from "@/lib/source";
+
+const BASE_URL = "https://cbeapi.vitetechsolutions.com";
 
 export const revalidate = false;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const url = (path: string): string => new URL(path, baseUrl).toString();
 
-  return [
-    {
-      url: url("/"),
-      changeFrequency: "monthly",
+  const basePages: MetadataRoute.Sitemap = [
+{
+      url:BASE_URL,
+      lastModified: new Date(),
+      changeFrequency: "daily",
       priority: 1,
     },
-    {
-      url: url("/docs"),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    ...(await Promise.all(
-      source.getPages().map((page) => {
-        const lastModified = page.data.lastModified;
-        return {
-          url: url(page.url),
-          changeFrequency: "weekly",
-          lastModified,
-          priority: 0.5,
-        } as MetadataRoute.Sitemap[number];
-      })
-    )),
+  ]
+
+  const docPages: MetadataRoute.Sitemap = source.getPages().map((page) => ({
+		url: `${BASE_URL}${page.url}`,
+		lastModified: page.data.lastModified
+			? new Date(page.data.lastModified)
+			: new Date(),
+		changeFrequency: "weekly",
+		priority: 0.7,
+	}));
+
+  return [
+    ...basePages,
+    ...docPages,
   ];
 }

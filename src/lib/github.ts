@@ -7,8 +7,8 @@ import {
   type PageFeedback,
 } from '@/components/feedback/schema';
 
+export const owner = 'Vite-Technologies';
 export const repo = 'docs.prana.vitetechsolutions.com';
-export const owner = 'vitetechsolutions';
 export const DocsCategory = 'Docs Feedback';
 
 let instance: Octokit | undefined;

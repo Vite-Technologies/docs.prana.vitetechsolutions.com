@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, BookOpen, Github } from "lucide-react";
+import { gitConfig } from "@/lib/layout.shared";
 
 export default function Hero() {
   return (
@@ -21,7 +22,7 @@ export default function Hero() {
             </div>
           </div>
           <h1 className="text-5xl font-bold tracking-tight sm:text-7xl bg-linear-to-b from-fd-foreground to-fd-foreground/60 bg-clip-text text-transparent">
-            Prana Documentation
+            Prana Connect Documentation
           </h1>
           <p className="mt-6 text-lg leading-8 text-fd-muted-foreground">
             Everything you need to build, scale, and manage your applications
@@ -38,7 +39,7 @@ export default function Hero() {
               <ArrowRight className="w-4 h-4 text-fd-primary-foreground/70" />
             </Link>
             <Link
-              href="https://github.com/Vite-Technologies"
+              href={`https://github.com/${gitConfig.user}/${gitConfig.repo}`}
               target="_blank"
               className="w-fit sm:w-auto text-sm font-semibold leading-6 text-fd-foreground flex items-center justify-center gap-2 hover:text-fd-primary transition-colors py-3 sm:py-0"
             >
