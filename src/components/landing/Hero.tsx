@@ -9,7 +9,7 @@ export default function Hero() {
         <div className="aspect-1097/845 w-274.25 bg-linear-to-tr from-[#ff4694] to-[#776fff] opacity-20" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         <div className="mx-auto max-w-2xl text-center">
           <div className="mb-8 flex justify-center">
             <div className="relative rounded-full px-3 py-1 text-sm leading-6 ring-1 ring-fd-border hover:ring-fd-border/80 dark:bg-fd-secondary/30 bg-fd-secondary/50">
@@ -28,10 +28,10 @@ export default function Hero() {
             with Vitetech solutions. Beautiful, fast, and developer-friendly
             documentation.
           </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-x-6">
             <Link
               href="/docs"
-              className="rounded-md bg-fd-primary px-5 py-3 text-sm font-semibold text-fd-primary-foreground shadow-sm hover:bg-fd-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-primary flex items-center gap-2 transition-all hover:scale-105"
+              className="w-fit sm:w-auto rounded-md bg-fd-primary px-5 py-3 text-sm font-semibold text-fd-primary-foreground shadow-sm hover:bg-fd-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-primary flex items-center justify-center gap-2 transition-all hover:scale-105"
             >
               <BookOpen className="w-4 h-4" />
               Get Started
@@ -40,7 +40,7 @@ export default function Hero() {
             <Link
               href="https://github.com/Vite-Technologies"
               target="_blank"
-              className="text-sm font-semibold leading-6 text-fd-foreground flex items-center gap-2 hover:text-fd-primary transition-colors"
+              className="w-fit sm:w-auto text-sm font-semibold leading-6 text-fd-foreground flex items-center justify-center gap-2 hover:text-fd-primary transition-colors py-3 sm:py-0"
             >
               <Github className="w-5 h-5" />
               GitHub Repository
