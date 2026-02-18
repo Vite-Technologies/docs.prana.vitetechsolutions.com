@@ -14,7 +14,6 @@ import { LLMCopyButton, ViewOptions } from "@/components/ai/page-actions";
 import { gitConfig } from "@/lib/layout.shared";
 import { Feedback } from "@/components/feedback/client";
 import { onPageFeedbackAction } from "@/lib/github";
-import { createMetadata } from "@/lib/metadata";
 
 export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   const params = await props.params;
