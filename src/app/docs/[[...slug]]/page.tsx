@@ -56,17 +56,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
         />
       </DocsBody>
       <Feedback onSendAction={onPageFeedbackAction} />
-      <div className="flex items-center justify-between gap-2">
-        {lastModifiedTime && <PageLastUpdate date={lastModifiedTime} />}
-        <a
-          href={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/content/docs/${page.path}`}
-          rel="noreferrer noopener"
-          target="_blank"
-          className="w-fit border shrink-0 rounded-xl p-2 font-medium text-sm text-fd-secondary-foreground bg-fd-secondary transition-colors hover:text-fd-accent-foreground hover:bg-fd-accent"
-        >
-          Edit on GitHub
-        </a>
-      </div>
+      {lastModifiedTime && <PageLastUpdate date={lastModifiedTime} />}
     </DocsPage>
   );
 }
