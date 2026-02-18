@@ -78,6 +78,7 @@ export async function generateMetadata(
   return {
     title,
     description,
+    keywords: [title, "documentation", "API reference", ...(params.slug ?? [])],
     openGraph: {
       title,
       description,

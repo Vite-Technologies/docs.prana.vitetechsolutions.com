@@ -11,6 +11,12 @@ export const metadata = createMetadata({
   },
   description:
     "Comprehensive API documentation, integration guides, and resources to help you seamlessly connect to Prana Connect's powerful healthcare payment system. Build, test, and deploy with ease.",
+  keywords: [
+    "Prana Connect Documentation",
+    "Healthcare Payment API",
+    "Medical Billing API",
+    "API integration guide",
+  ],
   metadataBase: baseUrl,
 });
 
