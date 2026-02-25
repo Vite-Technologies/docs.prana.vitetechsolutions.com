@@ -12,6 +12,7 @@ import type { Metadata } from "next";
 import { createRelativeLink } from "fumadocs-ui/mdx";
 import { LLMCopyButton, ViewOptions } from "@/components/ai/page-actions";
 import { gitConfig } from "@/lib/layout.shared";
+import { BASE_URL } from "@/lib/metadata";
 import { Feedback } from "@/components/feedback/client";
 import { onPageFeedbackAction } from "@/lib/github";
 
@@ -22,6 +23,20 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
 
   const MDX = page.data.body;
   const lastModifiedTime = page.data.lastModified;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: page.data.title,
+    description: page.data.description,
+    url: `${BASE_URL}${page.url}`,
+    dateModified: lastModifiedTime?.toISOString(),
+    publisher: {
+      "@type": "Organization",
+      name: "Prana Connect",
+      url: BASE_URL,
+    },
+  };
 
   return (
     <DocsPage
@@ -36,6 +51,10 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
         includeSeparator: true,
       }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription className="mb-0">
         {page.data.description}
@@ -75,22 +94,39 @@ export async function generateMetadata(
   const title = page.data.title;
   const description = page.data.description;
 
+  const canonicalUrl = `${BASE_URL}${page.url}`;
+
   return {
     title,
     description,
     keywords: [title, "documentation", "API reference", ...(params.slug ?? [])],
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title,
       description,
-      type: "website",
-      url: page.url,
-      images: getPageImage(page).url,
+      type: "article",
+      url: canonicalUrl,
+      images: [
+        {
+          url: getPageImage(page).url,
+          width: 1200,
+          height: 630,
+        },
+      ],
     },
     twitter: {
       title,
       description,
       card: "summary_large_image",
-      images: getPageImage(page).url,
+      images: [
+        {
+          url: getPageImage(page).url,
+          width: 1200,
+          height: 630,
+        },
+      ],
     },
   };
 }

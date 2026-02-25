@@ -168,7 +168,6 @@ export function Feedback({
         ) : (
           <form className="flex flex-col gap-3" onSubmit={submit}>
             <textarea
-              autoFocus
               required
               value={message}
               onChange={(e) => setMessage(e.target.value)}
@@ -307,7 +306,6 @@ export function FeedbackBlock({
         ) : (
           <form className="flex flex-col gap-2" onSubmit={submit}>
             <textarea
-              autoFocus
               required
               value={message}
               onChange={(e) => setMessage(e.target.value)}
@@ -346,18 +344,22 @@ function useSubmissionStorage<Result>(
   const validateCallback = useEffectEvent(validate);
 
   useEffect(() => {
-    const item = localStorage.getItem(storageKey);
-    if (item === null) return;
-    const validated = validateCallback(JSON.parse(item));
+    try {
+      const item = localStorage.getItem(storageKey);
+      if (item === null) return;
+      const validated = validateCallback(JSON.parse(item));
 
-    if (validated !== null) setValue(validated);
+      if (validated !== null) setValue(validated);
+    } catch {}
   }, [storageKey]);
 
   return {
     previous: value,
     setPrevious(result: Result | null) {
-      if (result) localStorage.setItem(storageKey, JSON.stringify(result));
-      else localStorage.removeItem(storageKey);
+      try {
+        if (result) localStorage.setItem(storageKey, JSON.stringify(result));
+        else localStorage.removeItem(storageKey);
+      } catch {}
 
       setValue(result);
     },

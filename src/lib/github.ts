@@ -6,10 +6,10 @@ import {
   type ActionResponse,
   type PageFeedback,
 } from '@/components/feedback/schema';
+import { gitConfig } from "@/lib/layout.shared";
 
-export const owner = 'Vite-Technologies';
-export const repo = 'docs.prana.vitetechsolutions.com';
-export const DocsCategory = 'Docs Feedback';
+
+const DocsCategory = 'Docs Feedback';
 
 let instance: Octokit | undefined;
 
@@ -28,8 +28,8 @@ async function getOctokit(): Promise<Octokit> {
   });
 
   const { data } = await app.octokit.request('GET /repos/{owner}/{repo}/installation', {
-    owner,
-    repo,
+    owner: gitConfig.user,
+    repo: gitConfig.repo,
     headers: {
       'X-GitHub-Api-Version': '2022-11-28',
     },
@@ -60,7 +60,7 @@ async function getFeedbackDestination() {
     repository: RepositoryInfo;
   } = await octokit.graphql(`
   query {
-    repository(owner: "${owner}", name: "${repo}") {
+    repository(owner: "${gitConfig.user}", name: "${gitConfig.repo}") {
       id
       discussionCategories(first: 25) {
         nodes { id name }
@@ -110,7 +110,7 @@ async function createDiscussionThread(pageId: string, body: string) {
     };
   } = await octokit.graphql(`
           query {
-            search(type: DISCUSSION, query: ${JSON.stringify(`${title} in:title repo:${owner}/${repo} author:@me`)}, first: 1) {
+            search(type:DISCUSSION, query: ${JSON.stringify(`${title} in:title repo:${gitConfig.user}/${gitConfig.repo} author:@me`)}, first: 1) {
               nodes {
                 ... on Discussion { id, url }
               }

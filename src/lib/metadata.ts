@@ -2,7 +2,7 @@ import type { Metadata } from "next/types";
 
 export const BASE_URL = "https://cbeapi.vitetechsolutions.com";
 
-export const DEFAULT_KEYWORDS = [
+const DEFAULT_KEYWORDS = [
   "Healthcare payments",
   "API documentation",
   "Medical billing integration",
