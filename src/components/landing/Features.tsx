@@ -1,81 +1,71 @@
-import { Zap, Shield, Globe, Cpu, Layout, Code } from "lucide-react";
+import { Shield, Zap, Code, Lock, RefreshCw, FileCheck } from "lucide-react";
 
 const features = [
   {
-    name: "Lightning Fast",
+    name: "One Integration, All Channels",
     description:
-      "Optimized for performance with Next.js and Tailwind CSS. Instant page loads and smooth transitions.",
-    icon: Zap,
+      "Connect to mobile banking, USSD, internet banking, and more through a single REST API. No need to build separate integrations for each CBE channel.",
+    icon: Code,
   },
   {
-    name: "Secure by Design",
+    name: "Managed Security",
     description:
-      "Built with security in mind, following best practices for modern web development.",
+      "We handle TLS certificates, VPN tunnels, and INSA compliance requirements. Your team never touches bank-grade security infrastructure.",
     icon: Shield,
   },
   {
-    name: "Global Scale",
+    name: "Protocol Translation",
     description:
-      "Deploy globally with confidence. Prana scales seamlessly with your user base.",
-    icon: Globe,
+      "Send standard JSON requests. Prana Connect translates them to the SOAP/XML formats the bank requires and returns clean responses.",
+    icon: RefreshCw,
   },
   {
-    name: "Developer First",
+    name: "Sub-Second Latency",
     description:
-      "Comprehensive API references and integration guides designed for developers.",
-    icon: Cpu,
+      "Optimized connection pooling and caching. Payment initiation calls resolve in under 200ms on average.",
+    icon: Zap,
   },
   {
-    name: "Responsive UI",
+    name: "Pre-Built Compliance",
     description:
-      "Crafted with a focus on usability across all devices, from mobile to desktop.",
-    icon: Layout,
+      "Transaction logging, audit trails, and regulatory reporting are handled automatically. Pass audits without writing extra code.",
+    icon: FileCheck,
   },
   {
-    name: "Extensible",
+    name: "Sandbox Environment",
     description:
-      "Modular architecture allowing you to customize and extend features as needed.",
-    icon: Code,
+      "Test against real CBE channel behavior with our sandbox. Simulate success, failure, and edge cases before going live.",
+    icon: Lock,
   },
 ];
 
 export default function Features() {
   return (
-    <div className="py-24 sm:py-32 relative">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:text-center mb-16">
-          <h2 className="text-base font-semibold leading-7 text-fd-primary uppercase tracking-wide">
-            Key Features
+    <section className="features-section">
+      <div className="features-container">
+        <div className="features-header">
+          <p className="features-label">What you get</p>
+          <h2 className="features-title">
+            Skip the bank infrastructure. Ship your product.
           </h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-fd-foreground sm:text-4xl">
-            Everything you need to succeed
-          </p>
-          <p className="mt-6 text-lg leading-8 text-fd-muted-foreground">
-            Prana provides a comprehensive suite of tools and documentation to
-            help you build modern, scalable applications.
+          <p className="features-desc">
+            Prana Connect removes weeks of integration work. Here&apos;s what we
+            handle so you don&apos;t have to.
           </p>
         </div>
-        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-            {features.map((feature) => (
-              <div key={feature.name} className="flex flex-col group">
-                <dt className="text-base font-semibold leading-7 text-fd-foreground flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-fd-primary/10 group-hover:bg-fd-primary/20 transition-colors">
-                    <feature.icon
-                      className="h-6 w-6 text-fd-primary"
-                      aria-hidden="true"
-                    />
-                  </div>
-                  {feature.name}
-                </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-fd-muted-foreground">
-                  <p className="flex-auto">{feature.description}</p>
-                </dd>
+
+        <div className="features-grid">
+          {features.map((feature) => (
+            <div key={feature.name} className="feature-card">
+              <div className="feature-icon">
+                <feature.icon className="w-5 h-5" aria-hidden="true" />
               </div>
-            ))}
-          </dl>
+              <h3 className="feature-name">{feature.name}</h3>
+              <p className="feature-desc">{feature.description}</p>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
