@@ -10,7 +10,7 @@ const features = [
   {
     name: "Managed Security",
     description:
-      "We handle TLS certificates, VPN tunnels, and INSA compliance requirements. Your team never touches bank-grade security infrastructure.",
+      "We provide enterprise-grade security including automated TLS management and regulatory compliance, so your team can focus on building product.",
     icon: Shield,
   },
   {

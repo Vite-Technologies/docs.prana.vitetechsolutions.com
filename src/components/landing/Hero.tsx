@@ -8,8 +8,8 @@ export default function Hero() {
       <div className="hero-container">
         {/* Primer */}
         <p className="hero-primer">
-          A single API that connects your business to CBE payment channels —
-          handling security, SOAP protocols, VPN, and INSA requirements for you.
+          A unified gateway for CBE payment channels — managing enterprise-grade
+          security and complex bank protocols so your team doesn&apos;t have to.
         </p>
 
         <div className="hero-grid">

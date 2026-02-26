@@ -32,7 +32,9 @@ export default function HeroVisual() {
           <span className="code-string">production</span>
           {'"\n'} {"});\n\n"}
           <span className="code-comment">
-            {"// That's it. No SOAP, no VPN, no INSA setup."}
+            {
+              "// That's it. Complex bank protocols and security are handled automatically."
+            }
           </span>
           {"\n"}
           <span className="code-keyword">const</span>
