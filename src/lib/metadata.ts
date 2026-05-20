@@ -7,6 +7,7 @@ const DEFAULT_KEYWORDS = [
   "API documentation",
   "Medical billing integration",
   "Prana Connect",
+  "Wegagen Bank",
   "Payment gateway for healthcare",
   "Healthcare fintech",
   "Seamless healthcare payments",

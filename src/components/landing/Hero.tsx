@@ -8,28 +8,28 @@ export default function Hero() {
       <div className="hero-container">
         {/* Primer */}
         <p className="hero-primer">
-          A unified gateway for CBE payment channels — managing enterprise-grade
-          security and complex bank protocols so your team doesn&apos;t have to.
+          Prana Connect for Wegagen Bank — a unified payment layer for hospital
+          systems, handling secure banking connectivity so your team ships
+          faster.
         </p>
 
         <div className="hero-grid">
           {/* Text */}
           <div className="hero-text">
             <h1 className="hero-headline">
-              The fastest path to CBE payment channels
+              Integrate hospital payments powered by Wegagen Bank
             </h1>
             <p className="hero-headline-sub">
-              Build your product. We&apos;ll handle the CBE integration.
+              Build your hospital workflow. We&apos;ll handle the bank rails.
             </p>
             <p className="hero-subhead">
-              Prana Connect provides a unified gateway for all CBE payment
-              channels. We handle the underlying security and connectivity so
-              your team stops managing complex bank infrastructure and starts
-              shipping product.
+              Prana Connect provides a single API to collect payments and
+              reconcile transactions for integrated hospital systems — powered
+              by Wegagen Bank.
             </p>
             <p className="hero-body">
-              A pre-configured environment for protocol translation, secure
-              connectivity, and compliance — one standard interface, no bank
+              A production-ready gateway for secure connectivity, protocol
+              translation, and audit trails — one standard interface, no banking
               infrastructure to maintain.
             </p>
 
@@ -40,7 +40,7 @@ export default function Hero() {
               </Link>
               <Link href="/docs" className="hero-btn-secondary" id="cta-guide">
                 <Download className="w-4 h-4" />
-                Get The API Guide
+                Read the API Guide
               </Link>
             </div>
           </div>
@@ -60,13 +60,13 @@ export default function Hero() {
               <Link href="/docs" className="hero-link" id="cta-sandbox">
                 Explore the API Sandbox
               </Link>{" "}
-              — test endpoints live, no registration required.
+              — use sample requests for common hospital workflows.
             </span>
           </div>
           <div className="hero-bottom-cta">
             <Download className="w-4 h-4" />
             <Link href="/docs" className="hero-link" id="cta-checklist">
-              Download the CBE Integration Checklist
+              Download the Go‑Live Checklist
             </Link>
           </div>
         </div>

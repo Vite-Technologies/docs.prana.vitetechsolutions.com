@@ -1,0 +1,4 @@
+{
+  "title": "Getting Started",
+  "pages": ["index", "authentication", "webhooks", "go-live-checklist"]
+}

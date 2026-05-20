@@ -1,0 +1,21 @@
+---
+title: Headers
+description: Common request headers used by Prana Connect APIs and webhooks
+---
+
+## API Requests
+
+| Header | Example | Notes |
+| --- | --- | --- |
+| `Authorization` | `Bearer $PRANA_API_KEY` | Server-side only |
+| `Content-Type` | `application/json` | For JSON requests |
+| `Idempotency-Key` | `550e8400-e29b-41d4-a716-446655440000` | Prevent duplicates |
+
+## Webhooks
+
+Webhook signature headers depend on your configuration. Common patterns:
+
+| Header | Example | Notes |
+| --- | --- | --- |
+| `X-Signature` | `t=...,v1=...` | Verify with webhook secret |
+| `X-Request-Id` | `req_...` | For support and debugging |

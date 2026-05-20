@@ -1,0 +1,47 @@
+---
+title: Webhooks
+description: Receive payment status updates reliably and verify authenticity
+---
+
+Webhooks deliver payment status updates for reconciliation and downstream hospital workflows.
+
+## Events
+
+Common events:
+
+- `payment.succeeded`
+- `payment.failed`
+- `payment.expired`
+- `payment.reversed`
+
+## Example Payload
+
+```json
+{
+  "id": "evt_01J9Q9F3M5P1A7",
+  "type": "payment.succeeded",
+  "createdAt": "2026-05-20T10:15:00.000Z",
+  "data": {
+    "paymentId": "pay_01J9Q9C2Z0T9N2",
+    "reference": "HOSP-INV-2026-000231",
+    "amount": 1500,
+    "currency": "ETB",
+    "status": "succeeded"
+  }
+}
+```
+
+## Verification
+
+Verify webhook authenticity using your webhook secret. The exact header name and signing algorithm depend on your environment settings.
+
+Recommended pattern:
+
+1. Read raw request body: Use the raw bytes, not a parsed JSON string.
+2. Compute signature: Compute an HMAC using your webhook secret.
+3. Compare signatures: Compare using a timing-safe equality check.
+4. Process idempotently: Ignore events you have already processed (store `event.id`).
+
+## Retries
+
+If your endpoint returns a non-2xx status, Prana Connect will retry delivery. Ensure your handler is idempotent.

@@ -1,0 +1,21 @@
+---
+title: Statuses
+description: Normalized statuses used across Prana Connect payment objects
+---
+
+## Payment Status
+
+| Status | Meaning | Hospital action |
+| --- | --- | --- |
+| `pending` | Payment initiated, not yet confirmed | Keep invoice open |
+| `succeeded` | Payment confirmed | Mark invoice paid |
+| `failed` | Payment failed | Keep invoice open, show retry option |
+| `expired` | Not completed within allowed window | Close payment attempt, allow new attempt |
+| `reversed` | Payment reversed/refunded | Reopen invoice or record reversal |
+
+## Event Types
+
+- `payment.succeeded`
+- `payment.failed`
+- `payment.expired`
+- `payment.reversed`

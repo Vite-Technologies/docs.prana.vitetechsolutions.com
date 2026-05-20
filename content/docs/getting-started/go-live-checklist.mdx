@@ -1,0 +1,31 @@
+---
+title: Go-Live Checklist
+description: Practical checklist for moving a hospital integration to production
+---
+
+## Before Production Access
+
+- Confirm your organization name and settlement account details.
+- Agree on reconciliation cadence (daily, weekly) and report format.
+- Confirm supported payment channels for your rollout scope.
+
+## Technical Readiness
+
+- Webhook endpoint deployed with TLS and stable URL
+- Webhook signature verification implemented
+- Idempotency keys added to create/initiate operations
+- Retry strategy with backoff implemented for transient errors
+- Observability: request logs, correlation IDs, error alerts
+
+## Hospital Workflow Readiness
+
+- Invoice/reference uniqueness enforced
+- Clear payer instructions per channel (USSD, mobile banking, etc.)
+- Refund/reversal workflow defined and tested
+- Finance team trained on reconciliation report fields
+
+## Final Tests
+
+- Run a full end-to-end sandbox test suite
+- Run a limited live pilot with controlled amounts
+- Validate reconciliation for pilot transactions

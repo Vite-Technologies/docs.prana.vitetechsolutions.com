@@ -10,7 +10,7 @@ export const metadata = createMetadata({
     default: "Prana Connect",
   },
   description:
-    "Comprehensive API documentation, integration guides, and resources to help you seamlessly connect to Prana Connect's powerful healthcare payment system. Build, test, and deploy with ease.",
+    "API documentation and integration guides for Prana Connect hospital payments, powered by Wegagen Bank. Build, test, and go live with confidence.",
   keywords: [
     "Prana Connect Documentation",
     "Healthcare Payment API",

@@ -1,0 +1,40 @@
+---
+title: Reconciliation
+description: Query transactions and export reports for finance operations
+---
+
+## List Payments by Date
+
+```http
+GET /v1/reports/payments?from=2026-05-01&to=2026-05-31
+```
+
+Example response:
+
+```json
+{
+  "items": [
+    {
+      "paymentId": "pay_01J9Q9C2Z0T9N2",
+      "reference": "HOSP-INV-2026-000231",
+      "amount": 1500,
+      "currency": "ETB",
+      "status": "succeeded",
+      "paidAt": "2026-05-20T10:15:10.000Z"
+    }
+  ],
+  "nextCursor": null
+}
+```
+
+## Export CSV
+
+```http
+GET /v1/reports/payments.csv?from=2026-05-01&to=2026-05-31
+```
+
+## Query by Reference
+
+```http
+GET /v1/reports/payments?reference=HOSP-INV-2026-000231
+```

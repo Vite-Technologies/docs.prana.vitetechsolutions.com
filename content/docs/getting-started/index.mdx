@@ -1,0 +1,53 @@
+---
+title: Quickstart
+description: Get a hospital system integrated with Prana Connect in a few steps
+---
+
+## Requirements
+
+- Prana Connect API key(s)
+- A webhook endpoint on your server
+- A stable invoice/reference strategy in your hospital system
+
+## Base URL
+
+Your Prana Connect environment defines the base URL:
+
+```txt
+Production: https://api.prana-connect.example
+Sandbox:    https://sandbox.prana-connect.example
+```
+
+If you need the exact URLs and credentials, contact your Prana Connect onboarding team.
+
+## Minimal Flow
+
+1. Create a payment intent: Create a payment request tied to your hospital invoice reference.
+2. Redirect or display instructions: Depending on the channel, present a redirect URL, a deep link, or payment instructions to the payer.
+3. Confirm via webhook: Receive the final payment status via webhook and update the invoice.
+
+## Example: Create Payment
+
+```bash
+curl -X POST "$BASE_URL/v1/payments" \
+  -H "Authorization: Bearer $PRANA_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "amount": 1500,
+    "currency": "ETB",
+    "reference": "HOSP-INV-2026-000231",
+    "description": "Consultation fee",
+    "customer": {
+      "name": "Patient Name",
+      "phone": "+251900000000"
+    }
+  }'
+```
+
+## Next
+
+<Cards>
+  <Card title="Authentication" href="/docs/getting-started/authentication" />
+  <Card title="Webhooks" href="/docs/getting-started/webhooks" />
+  <Card title="API Reference" href="/docs/api-reference" />
+</Cards>

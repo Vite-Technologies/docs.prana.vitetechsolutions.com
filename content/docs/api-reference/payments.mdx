@@ -1,0 +1,62 @@
+---
+title: Payments
+description: Create, fetch, and confirm hospital payment intents
+---
+
+## Create Payment
+
+```http
+POST /v1/payments
+```
+
+```json
+{
+  "amount": 1500,
+  "currency": "ETB",
+  "reference": "HOSP-INV-2026-000231",
+  "description": "Consultation fee",
+  "channel": "mobile-banking",
+  "customer": {
+    "name": "Patient Name",
+    "phone": "+251900000000"
+  }
+}
+```
+
+Example response:
+
+```json
+{
+  "id": "pay_01J9Q9C2Z0T9N2",
+  "status": "pending",
+  "reference": "HOSP-INV-2026-000231",
+  "amount": 1500,
+  "currency": "ETB",
+  "channel": "mobile-banking",
+  "instructions": {
+    "type": "text",
+    "message": "Complete payment in Wegagen Bank mobile banking using reference HOSP-INV-2026-000231."
+  },
+  "createdAt": "2026-05-20T10:10:00.000Z"
+}
+```
+
+## Get Payment
+
+```http
+GET /v1/payments/{paymentId}
+```
+
+## Find by Reference
+
+```http
+GET /v1/payments?reference={reference}
+```
+
+## Statuses
+
+- `pending`
+- `succeeded`
+- `failed`
+- `expired`
+- `reversed`

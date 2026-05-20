@@ -1,0 +1,35 @@
+---
+title: Authentication
+description: API keys, environments, and safe request signing patterns
+---
+
+Prana Connect uses bearer tokens for server-to-server requests.
+
+## Bearer Token
+
+Send your API key in the `Authorization` header:
+
+```http
+Authorization: Bearer <PRANA_API_KEY>
+```
+
+## Environments
+
+- Sandbox: Use for development and test cases.
+- Production: Use for real transactions.
+
+Never reuse production keys in non-production environments.
+
+## Idempotency
+
+Use an idempotency key for create/charge-like operations to prevent duplicate payments when retries happen.
+
+```http
+Idempotency-Key: <uuid>
+```
+
+## Security Notes
+
+- Store keys in server-side secrets (not in frontend code).
+- Rotate keys and webhook secrets on a schedule.
+- Restrict outbound traffic from your services to known Prana Connect endpoints when possible.

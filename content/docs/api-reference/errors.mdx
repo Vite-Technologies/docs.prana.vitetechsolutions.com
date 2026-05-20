@@ -1,0 +1,32 @@
+---
+title: Errors
+description: Error format, status codes, and retry guidance
+---
+
+## Error Format
+
+```json
+{
+  "error": {
+    "code": "invalid_request",
+    "message": "reference is required",
+    "requestId": "req_01J9Q9R2Q7Z1E7"
+  }
+}
+```
+
+## Status Codes
+
+- `400` Validation errors
+- `401` Missing/invalid authentication
+- `403` Not allowed for this key or environment
+- `404` Resource not found
+- `409` Conflict (often idempotency-related)
+- `429` Rate limited
+- `500`/`502`/`503` Transient server errors
+
+## Retries
+
+- Retry on `500`/`502`/`503` with exponential backoff.
+- Do not blindly retry `400` errors; fix the payload.
+- Use idempotency keys for all create/initiate requests.

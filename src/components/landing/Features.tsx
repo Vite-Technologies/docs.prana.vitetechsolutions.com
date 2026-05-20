@@ -4,7 +4,7 @@ const features = [
   {
     name: "One Integration, All Channels",
     description:
-      "Connect to mobile banking, USSD, internet banking, and more through a single REST API. No need to build separate integrations for each CBE channel.",
+      "Connect hospital workflows to Wegagen Bank payment rails through a single REST API. No separate integrations per channel or product line.",
     icon: Code,
   },
   {
@@ -16,25 +16,25 @@ const features = [
   {
     name: "Protocol Translation",
     description:
-      "Send standard JSON requests. Prana Connect translates them to the SOAP/XML formats the bank requires and returns clean responses.",
+      "Send standard JSON requests. Prana Connect translates and validates bank-specific formats and returns consistent responses.",
     icon: RefreshCw,
   },
   {
     name: "Sub-Second Latency",
     description:
-      "Optimized connection pooling and caching. Payment initiation calls resolve in under 200ms on average.",
+      "Optimized connection pooling and retries tuned for payment flows. Keep checkouts fast without sacrificing reliability.",
     icon: Zap,
   },
   {
     name: "Pre-Built Compliance",
     description:
-      "Transaction logging, audit trails, and regulatory reporting are handled automatically. Pass audits without writing extra code.",
+      "Transaction logs, audit trails, and reconciliation-friendly references are built-in for hospital finance teams.",
     icon: FileCheck,
   },
   {
     name: "Sandbox Environment",
     description:
-      "Test against real CBE channel behavior with our sandbox. Simulate success, failure, and edge cases before going live.",
+      "Test end-to-end hospital payment scenarios in a sandbox. Simulate success, failure, timeouts, and reversals before go-live.",
     icon: Lock,
   },
 ];

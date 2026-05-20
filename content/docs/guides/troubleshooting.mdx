@@ -1,0 +1,28 @@
+---
+title: Troubleshooting
+description: Common integration issues and how to resolve them
+---
+
+## Authentication Errors (401/403)
+
+- Confirm you are using the correct environment key (sandbox vs production).
+- Ensure the `Authorization` header is present and correctly formatted.
+- Verify your server clock is accurate if your environment enforces timestamp validation.
+
+## No Webhooks Received
+
+- Confirm the webhook URL is reachable publicly.
+- Confirm your webhook endpoint returns 2xx quickly.
+- Check signature verification does not reject valid payloads.
+- Ensure your firewall allows inbound requests from Prana Connect.
+
+## Payment Stuck in Pending
+
+- Confirm the payer completed the channel steps.
+- Poll payment status by `paymentId` or `reference`.
+- If pending exceeds your operational SLA, treat as expired and re-initiate with a new idempotency key.
+
+## Reconciliation Mismatches
+
+- Ensure you always persist `reference` and `paymentId` together.
+- Ensure finance exports are generated from final states only.

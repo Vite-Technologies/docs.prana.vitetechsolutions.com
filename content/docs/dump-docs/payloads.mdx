@@ -1,0 +1,51 @@
+---
+title: Payload Templates
+description: Copy/paste payload templates for common hospital payment workflows
+---
+
+## Create Payment
+
+```json
+{
+  "amount": 0,
+  "currency": "ETB",
+  "reference": "HOSP-INV-YYYY-NNNNNN",
+  "description": "Invoice description",
+  "channel": "mobile-banking",
+  "customer": {
+    "name": "Patient Name",
+    "phone": "+251900000000"
+  },
+  "metadata": {
+    "hospitalId": "HOSP-001",
+    "department": "Radiology"
+  }
+}
+```
+
+## Refund
+
+```json
+{
+  "paymentId": "pay_...",
+  "amount": 0,
+  "reason": "Reason for refund"
+}
+```
+
+## Webhook Event
+
+```json
+{
+  "id": "evt_...",
+  "type": "payment.succeeded",
+  "createdAt": "2026-05-20T10:15:00.000Z",
+  "data": {
+    "paymentId": "pay_...",
+    "reference": "HOSP-INV-YYYY-NNNNNN",
+    "amount": 0,
+    "currency": "ETB",
+    "status": "succeeded"
+  }
+}
+```

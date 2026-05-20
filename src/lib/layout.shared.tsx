@@ -13,6 +13,11 @@ export function baseOptions(): BaseLayoutProps {
     nav: {
       title: <Logo />,
     },
+    links: [
+      { type: "main", text: "Documentation", url: "/docs", active: "nested-url" },
+      { type: "main", text: "Blog", url: "/blog", active: "nested-url" },
+      { type: "main", text: "Resources", url: "/resources", active: "nested-url" },
+    ],
     githubUrl: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,
   };
 }

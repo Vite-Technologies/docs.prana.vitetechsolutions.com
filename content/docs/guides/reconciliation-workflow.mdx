@@ -1,0 +1,26 @@
+---
+title: Reconciliation Workflow
+description: How to reconcile hospital invoices to payments and settlements
+---
+
+## Recommended Process
+
+1. Ingest webhooks: Store every webhook event (by `event.id`) and map it to your invoice `reference`.
+2. Daily reconciliation: Pull a daily report by time range and compare against paid invoices.
+3. Investigate mismatches: Investigate “paid in bank but not marked paid” and “marked paid but no settlement” cases.
+4. Close the day: Produce a finance export for the hospital finance team.
+
+## Common Queries
+
+- By reference: resolve a single invoice dispute quickly.
+- By date range: daily/weekly reconciliation.
+- By status: list pending/expired payments for follow-up.
+
+## Finance-Friendly References
+
+Keep `reference` short, unique, and consistently shown to the payer. It becomes the key used across:
+
+- HIS invoice screen
+- Payer instructions/receipt
+- Webhook events
+- Finance export

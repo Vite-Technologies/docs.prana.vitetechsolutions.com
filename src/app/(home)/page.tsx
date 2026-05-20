@@ -3,9 +3,9 @@ import Features from "@/components/landing/Features";
 import { createMetadata, BASE_URL } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "Prana Connect — The Fastest Path to CBE Payment Channels",
+  title: "Prana Connect - Wegagen Bank — Hospital Payments API Docs",
   description:
-    "A unified gateway for CBE payment channels — managing enterprise-grade security and complex bank protocols so your team doesn't have to.",
+    "Documentation for integrating hospital systems with Prana Connect, powered by Wegagen Bank. APIs, guides, sandbox flows, and go-live checklist.",
   alternates: {
     canonical: BASE_URL,
   },

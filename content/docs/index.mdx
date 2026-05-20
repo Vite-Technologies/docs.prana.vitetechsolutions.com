@@ -1,13 +1,29 @@
 ---
-title: Hello World
-description: Your first document
+title: Overview
+description: Prana Connect documentation for hospital payments powered by Wegagen Bank
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+Prana Connect is the integration layer that allows an integrated hospital system to initiate and reconcile payments using Wegagen Bank payment rails.
 
-## What is Next?
+You build your hospital workflow and UI. Prana Connect provides the bank connectivity, protocol translation, security controls, and consistent APIs.
 
 <Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.dev" />
+  <Card title="Getting Started" href="/docs/getting-started" />
+  <Card title="Hospital Integration Guide" href="/docs/guides/hospital-integration" />
+  <Card title="API Reference" href="/docs/api-reference" />
+  <Card title="Quick Reference" href="/docs/dump-docs" />
 </Cards>
+
+## Core Concepts
+
+- Invoice reference: The hospital system generates a unique reference that travels through the full payment lifecycle.
+- Payment intent: Create a payment request that a payer completes via supported channels.
+- Webhooks: Receive reliable status updates (success, failed, expired, reversed) for reconciliation.
+- Reconciliation: Query and export transaction results by date range, reference, or status.
+
+## Typical Flow
+
+1. Create an invoice: Generate a unique invoice/reference in your hospital system.
+2. Initiate payment: Call the payments API with amount, currency, reference, and payer identifiers (when applicable).
+3. Confirm via webhook: Verify the webhook signature and mark the invoice as paid/failed.
+4. Reconcile: Use reconciliation endpoints and reports to match settlements to invoices.

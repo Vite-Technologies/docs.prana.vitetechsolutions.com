@@ -1,0 +1,31 @@
+---
+title: Refunds & Reversals
+description: Initiate refunds and track reversal status
+---
+
+Refund and reversal availability depends on channel and bank rules. Confirm supported flows during onboarding.
+
+## Create Refund
+
+```http
+POST /v1/refunds
+```
+
+```json
+{
+  "paymentId": "pay_01J9Q9C2Z0T9N2",
+  "amount": 1500,
+  "reason": "Duplicate charge"
+}
+```
+
+## Get Refund
+
+```http
+GET /v1/refunds/{refundId}
+```
+
+## Notes
+
+- Prefer refunding by `paymentId` to avoid ambiguity.
+- Handle refund completion via webhooks where supported.

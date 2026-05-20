@@ -1,0 +1,10 @@
+{
+  "title": "Prana Connect",
+  "pages": [
+    "index",
+    "./getting-started",
+    "./guides",
+    "./api-reference",
+    "./dump-docs"
+  ]
+}

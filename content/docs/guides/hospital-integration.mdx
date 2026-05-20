@@ -1,0 +1,53 @@
+---
+title: Hospital Integration
+description: Recommended architecture for integrating an HIS with Prana Connect (Wegagen Bank powered)
+---
+
+## Reference Model
+
+Recommended components:
+
+- HIS (billing + cashier module)
+- Prana Connect adapter/service (server-side)
+- Webhook receiver (can be the same service)
+- Finance/reconciliation tooling (reports + exports)
+
+## Data Model
+
+Use a stable reference scheme that never changes after creation:
+
+```txt
+HOSP-INV-YYYY-NNNNNN
+```
+
+Suggested fields to store per payment:
+
+| Field | Purpose |
+| --- | --- |
+| `reference` | Primary reconciliation key |
+| `paymentId` | Prana Connect identifier |
+| `status` | pending/succeeded/failed/expired/reversed |
+| `amount` / `currency` | Amount correctness and reporting |
+| `channel` | Operational support and analytics |
+| `createdAt` / `paidAt` | Reporting and SLA tracking |
+
+## UI/UX Patterns
+
+1. Generate invoice: Generate and persist `reference` in your HIS before initiating payment.
+2. Initiate payment: Create a payment intent and receive instructions (or a redirect URL).
+3. Show clear payer instructions: Display the exact steps to complete the payment, and keep the screen non-blocking.
+4. Confirm automatically: Update the invoice when a webhook arrives; avoid manual “refresh” as the default path.
+
+## Handling Edge Cases
+
+- Timeouts: Treat as unknown and poll payment status by `reference` until final state.
+- Duplicate clicks: Use idempotency keys to avoid duplicated intents.
+- Partial payments: Decide policy (reject, accept as credit, or split invoices) before go-live.
+
+## Environments
+
+Keep sandbox and production separated:
+
+- Separate credentials
+- Separate webhook URLs
+- Separate monitoring/alerts
